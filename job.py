@@ -14,10 +14,15 @@ def predict(model, input_df):
 
 
 def run():
+    from PIL import Image
+    image_logo = Image.open('employee.jpeg')
+    image_office = Image.open('office.jpeg')
+    st.image(image_logo,use_column_width=False)
     add_selectbox = st.sidebar.selectbox(
     "How would you like to predict?",
     ("Realtime", "Batch"))
     st.sidebar.info('This app predicts if an employee will leave the company')
+    st.sidebar.image(image_office)
     st.title("Predicting employee leaving")
     if add_selectbox == 'Realtime':
         satisfaction_level=st.number_input('satisfaction_level' , min_value=0.1, max_value=1.0, value=0.1)
